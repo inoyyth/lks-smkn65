@@ -1,0 +1,60 @@
+@extends('layouts.default')
+@section('content')
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Pelanggan</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="{{ url('/pelanggan') }}">Pelanggan</a></li>
+        <li class="breadcrumb-item active">Tables</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Tambah Pelanggan
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url('/pelanggan/store') }}">
+                @csrf
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nama</label>
+                    <input name="name" type="text" class="form-control"  placeholder="nama" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control"  placeholder="name@example.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Tanggal Lahir</label>
+                    <input name="tgl_lahir" type="text" class="form-control datepicker"  placeholder="tgl lahir" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Telp</label>
+                    <input name="telp" type="text" class="form-control"  placeholder="telp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
+                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+@push('styles')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+@endpush
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd', // You can change the format as per your need
+        autoclose: true        // Automatically closes the datepicker after selection
+    });
+});
+</script>
+@endpush
+
