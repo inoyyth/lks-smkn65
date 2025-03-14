@@ -12,7 +12,7 @@
             {{ $title }}
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('/pelanggan/store') }}">
+            <form method="POST" action="{{ url('/pelanggan/store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nama</label>
@@ -33,6 +33,10 @@
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
                     <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Foto</label>
+                    <input name="image" type="file" class="form-control"  placeholder="image" required>
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Simpan</button>

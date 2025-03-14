@@ -14,6 +14,7 @@ class Pelanggan extends Model
         'email',
         'tgl_lahir',
         'telp',
-        'alamat'
+        'alamat',
+        'image'
     ];
 }

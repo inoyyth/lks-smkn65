@@ -39,6 +39,11 @@
                     <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $data->alamat }}</textarea>
                 </div>
                 <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Foto</label>
+                    <input name="image" type="file" value="{{ $data->image }}" class="form-control"  placeholder="image" required>
+                    <img src="{{ asset('storage/'.$data->image) }}" style="width: 200px;"/>
+                </div>
+                <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </form>

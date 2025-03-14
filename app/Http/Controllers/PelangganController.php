@@ -50,7 +50,15 @@ class PelangganController extends Controller
 
     public function store(Request $request)
     {
+        $path = '';
+
+        if ($request->hasFile('image')) {
+            // Store the image in "storage/app/public/uploads"
+            $path = $request->file('image')->store('uploads', 'public');
+        }
+
         $data = $request->all();
+        $data['image'] = $path;
 
         $query = new Pelanggan();
         if (isset($data['id']) && !empty($data['id'])) {

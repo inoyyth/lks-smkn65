@@ -38,6 +38,7 @@
                         <th>Telp</th>
                         <th>Tgl Lahir</th>
                         <th>Alamat</th>
+                        <th>Foto</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td>{{ $v->telp }}</td>
                         <td>{{ $v->tgl_lahir }}</td>
                         <td>{{ $v->alamat }}</td>
+                        <td><img src="{{ asset('storage/'.$v->image) }}" style="width: 100px;"/></td>
                         <td>
                             <a href="{{ url('/pelanggan/edit/'.$v->id) }}" class="btn btn-warning">Edit</a>
                             <a href="{{ url('/pelanggan/destroy/'.$v->id) }}" class="btn btn-danger">Delete</a>
