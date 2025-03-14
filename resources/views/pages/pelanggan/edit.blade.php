@@ -12,7 +12,7 @@
             {{ $title }}
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ url('/pelanggan/store') }}">
+            <form method="POST" action="{{ url('/pelanggan/store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">ID</label>
