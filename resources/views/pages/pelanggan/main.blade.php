@@ -1,14 +1,26 @@
 @extends('layouts.default')
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Pelanggan</h1>
+    <h1 class="mt-4">{{ $module }}</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{ url('/pelanggan') }}">Pelanggan</a></li>
         <li class="breadcrumb-item active">Tables</li>
     </ol>
-    <div class="row">
-        <div class="col-lg-12 mb-4">
+    <div class="row mb-4">
+        <div class="col-lg-6">
             <a href="{{ url('/pelanggan/add') }}" class="btn btn-primary">Tambah</a>
+        </div>
+        <div class="col-lg-6">
+            <form method="GET" action="{{ url('/pelanggan') }}">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <input name="filter" value="" type="text" class="form-control"  placeholder="filter">
+                    </div>
+                    <div class="col-lg-2">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="card mb-4">
@@ -20,6 +32,7 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Telp</th>
@@ -29,16 +42,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $k=>$v)
+                    @foreach($list as $k=>$v)
                     <tr>
+                        <td>{{ $k+1 }}</td>
                         <td>{{ $v->name }}</td>
                         <td>{{ $v->email }}</td>
                         <td>{{ $v->telp }}</td>
                         <td>{{ $v->tgl_lahir }}</td>
                         <td>{{ $v->alamat }}</td>
                         <td>
-                            <a href="" class="btn btn-warning">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <a href="{{ url('/pelanggan/edit/'.$v->id) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ url('/pelanggan/destroy/'.$v->id) }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pelanggan;
+use Illuminate\Support\Facades\DB;
 
 class PelangganController extends Controller
 {
@@ -11,12 +12,35 @@ class PelangganController extends Controller
     {
         $data = Pelanggan::get();
 
-        return view('pages.pelanggan.main', ['data' => $data]); 
+        // $data = DB::table('pelanggans')->get();
+
+        $module = 'Pelanggan';
+
+        return view('pages.pelanggan.main', 
+            ['list' => $data, 'module' => $module]
+        ); 
     }
 
     public function add()
     {
-        return view('pages.pelanggan.add');
+        $title = 'Tambah Pelanggan';
+
+        return view('pages.pelanggan.add', ['title' => $title]);
+    }
+
+    public function edit($id)
+    {
+        $title = 'Edit Pelanggan';
+        
+        // untuk get data pelanggan berdasarkan id
+        $data = Pelanggan::find($id);
+
+        return view('pages.pelanggan.edit', 
+            [
+                'title' => $title,
+                'data' => $data
+            ]
+        );
     }
 
     public function store(Request $request)
@@ -30,6 +54,13 @@ class PelangganController extends Controller
         $query = $query->fill($data);
         $query->save();
 
+        return redirect()->to('/pelanggan');
+    }
+
+    public function destroy($id)
+    {
+        $query = Pelanggan::where('id', $id)->delete();
+        
         return redirect()->to('/pelanggan');
     }
 }

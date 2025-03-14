@@ -15,24 +15,28 @@
             <form method="POST" action="{{ url('/pelanggan/store') }}">
                 @csrf
                 <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">ID</label>
+                    <input name="id" value="{{ $data->id }}" type="text" class="form-control"  placeholder="nama" required>
+                </div>
+                <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                    <input name="name" type="text" class="form-control"  placeholder="nama" required>
+                    <input name="name" value="{{ $data->name }}" type="text" class="form-control"  placeholder="nama" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control"  placeholder="name@example.com" required>
+                    <input name="email" value="{{ $data->email }}" type="email" class="form-control"  placeholder="name@example.com" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Tanggal Lahir</label>
-                    <input name="tgl_lahir" type="text" class="form-control datepicker"  placeholder="tgl lahir" required>
+                    <input name="tgl_lahir" value="{{ $data->tgl_lahir }}" type="text" class="form-control datepicker"  placeholder="tgl lahir" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Telp</label>
-                    <input name="telp" type="text" class="form-control"  placeholder="telp" required>
+                    <input name="telp" value="{{ $data->telp }}" type="text" class="form-control"  placeholder="telp" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Alamat</label>
-                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="alamat" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $data->alamat }}</textarea>
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Simpan</button>

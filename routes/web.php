@@ -12,6 +12,6 @@ Route::get('/', [HomepageController::class, 'index']);
 
 Route::get('/pelanggan', [PelangganController::class, 'index']);
 Route::get('/pelanggan/add', [PelangganController::class, 'add']);
-Route::get('/pelanggan/edit', [PelangganController::class, 'edit']);
-Route::get('/pelanggan/destroy', [PelangganController::class, 'destroy']);
+Route::get('/pelanggan/edit/{id}', [PelangganController::class, 'edit']);
+Route::get('/pelanggan/destroy/{id}', [PelangganController::class, 'destroy']);
 Route::post('/pelanggan/store', [PelangganController::class, 'store']);
