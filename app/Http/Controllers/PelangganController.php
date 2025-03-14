@@ -8,16 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class PelangganController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Pelanggan::get();
+        $filter = $request->filter;
 
-        // $data = DB::table('pelanggans')->get();
+        $data = Pelanggan::select('*');
+        if ($filter) {
+            $data = $data->where('name', 'like', '%'.$filter.'%');
+        }
+
+        $data = $data->get();
 
         $module = 'Pelanggan';
 
         return view('pages.pelanggan.main', 
-            ['list' => $data, 'module' => $module]
+            ['list' => $data, 'module' => $module, 'filter' => $filter]
         ); 
     }
 
@@ -60,7 +65,7 @@ class PelangganController extends Controller
     public function destroy($id)
     {
         $query = Pelanggan::where('id', $id)->delete();
-        
+
         return redirect()->to('/pelanggan');
     }
 }

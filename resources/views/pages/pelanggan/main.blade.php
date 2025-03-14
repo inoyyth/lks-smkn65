@@ -14,7 +14,7 @@
             <form method="GET" action="{{ url('/pelanggan') }}">
                 <div class="row">
                     <div class="col-lg-10">
-                        <input name="filter" value="" type="text" class="form-control"  placeholder="filter">
+                        <input name="filter" value="{{ $filter }}" type="text" class="form-control"  placeholder="filter">
                     </div>
                     <div class="col-lg-2">
                         <button type="submit" class="btn btn-primary">Simpan</button>
